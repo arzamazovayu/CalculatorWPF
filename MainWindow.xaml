@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorWPF"
         mc:Ignorable="d"
-        Title="Calculator" Height="550" Width="353" Background="#FF191919" MinWidth="353" MinHeight="550" MaxWidth="353" MaxHeight="550" ResizeMode="NoResize" Cursor="Hand">
+        Title="Calculator" Height="550" Width="353" Background="#FF191919" MinWidth="353" MinHeight="550" MaxWidth="353" MaxHeight="550" ResizeMode="NoResize" Cursor="Hand" WindowStartupLocation="CenterScreen" Topmost="True">
     <Window.Resources>
         <Style TargetType="Button" x:Key="NumButton">
             <Setter Property="Background" Value="#FF353535"/>
@@ -30,7 +30,7 @@
         </Style>
         <Style BasedOn="{StaticResource NumButton}" TargetType="Button" x:Key="SigButton">
             <Setter Property="Background" Value="#FF2D2D2D"/>
-            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontWeight" Value="Medium" />
         </Style>
         <Style BasedOn="{StaticResource SigButton}" TargetType="Button" x:Key="EntButton">
             <Setter Property="Background" Value="#FFC18502"/>
@@ -66,8 +66,11 @@
     </Window.Resources>
     <DockPanel>
         <Menu HorizontalAlignment="Left" DockPanel.Dock="Top" VerticalAlignment="Top" Style="{StaticResource ResourceKey=MenuS}">
-            <MenuItem Header="Options" BorderThickness="0,0,0,0" BorderBrush="#FF191919" Height="25">
-                <MenuItem Header="Exit" Style="{StaticResource ResourceKey=MenuItemS}" BorderBrush="Black"/>
+            <MenuItem Header="Options" BorderThickness="0,0,0,0" BorderBrush="#FF191919" Height="25" Click="MenuItem_Click">
+                <MenuItem x:Name="Exit" Header="Exit" ToolTip="Выйти из программы" Style="{StaticResource ResourceKey=MenuItemS}" BorderBrush="Black" Click="Exit_Click"/>
+                <MenuItem x:Name="Engineering" Header="Engineering" ToolTip="Перейти в инженерный режим" Style="{StaticResource ResourceKey=MenuItemS}" BorderBrush="Black" Click="Engineering_Click_1"/>
+                <MenuItem x:Name="About" Header="About" ToolTip="О программе" Style="{StaticResource ResourceKey=MenuItemS}" BorderBrush="Black" Click="About_Click_1"/>
+                <MenuItem x:Name="QuadraticEquation" Header="Quadratic Equation" ToolTip="Решить квадратное уравнение" Style="{StaticResource ResourceKey=MenuItemS}" BorderBrush="Black" Click="QuadraticEquation_Click"/>
             </MenuItem>
         </Menu>
         <Grid x:Name="myGrid" Button.Click="myGrid_Click_1">
@@ -87,26 +90,26 @@
                 <ColumnDefinition Width="88*"/>
                 <ColumnDefinition Width="88*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="comma" Grid.Column="0" Content="." Grid.Row="7" 	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
-            <Button x:Name="invert" Grid.Column="2" Content="+/-" Grid.Row="7" Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1"/>
-            <Button x:Name="zero" Grid.Column="1" Content="0" Grid.Row="7"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
-            <Button x:Name="equal" Grid.Column="3" Content="=" Grid.Row="7"	Style="{StaticResource ResourceKey=EntButton}" Margin="1,1,1,1"/>
+            <Button x:Name="comma" Grid.Column="0" Content="." Grid.Row="7" ToolTip="Десятичная точка"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
+            <Button x:Name="zero" Grid.Column="1" Content="0" Grid.Row="7" 	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
+            <Button x:Name="invert" Grid.Column="2" Content="+/-" Grid.Row="7" ToolTip="Сменить знак" Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1" />
+            <Button x:Name="equal" Grid.Column="3" Content="=" Grid.Row="7"	ToolTip="Вычислить результат" Style="{StaticResource ResourceKey=EntButton}" Margin="1,1,1,1"/>
             <Button x:Name="seven" Grid.Column="0" Content="7" Grid.Row="6"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
             <Button x:Name="eight" Grid.Column="1" Content="8" Grid.Row="6"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
             <Button x:Name="nine" Grid.Column="2" Content="9" Grid.Row="6"	Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1"/>
-            <Button x:Name="divide" Grid.Column="3" Content=":" Grid.Row="6"	Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="divide" Grid.Column="3" Content=":" Grid.Row="6" ToolTip="Деление"	Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
             <Button x:Name="four" Grid.Column="0" Content="4" Grid.Row="5"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
             <Button x:Name="five" Grid.Column="1" Content="5" Grid.Row="5"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
             <Button x:Name="six" Grid.Column="2" Content="6" Grid.Row="5"	Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1"/>
-            <Button x:Name="times" Grid.Column="3" Content="x" Grid.Row="5"	Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="times" Grid.Column="3" Content="x" Grid.Row="5"	ToolTip="Умножение" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
             <Button x:Name="one" Grid.Column="0" Content="1" Grid.Row="4"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
             <Button x:Name="two" Grid.Column="1" Content="2" Grid.Row="4"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
             <Button x:Name="three" Grid.Column="2" Content="3" Grid.Row="4"	Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1"/>
-            <Button x:Name="substract" Grid.Column="3" Content="-" Grid.Row="4"	Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
-            <Button x:Name="close" Grid.Column="0" Content="exit" Grid.Row="3" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
-            <Button x:Name="ce" Grid.Column="1" Content="CE" Grid.Row="3"	Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,0,1"/>
-            <Button x:Name="c" Grid.Column="2" Content="C" Grid.Row="3"		Style="{StaticResource ResourceKey=SigButton}" Margin="2,1,1,1"/>
-            <Button x:Name="sum" Grid.Column="3" Content="+" Grid.Row="3"	Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="substract" Grid.Column="3" Content="-" Grid.Row="4"	ToolTip="Вычитание" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="backspace" Grid.Column="0" Content="←" Grid.Row="3" ToolTip="Удалить последний символ" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1" />
+            <Button x:Name="ce" Grid.Column="1" Content="CE" Grid.Row="3" ToolTip="Очистить всё" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,0,1" />
+            <Button x:Name="c" Grid.Column="2" Content="C" Grid.Row="3" ToolTip="Очистить текущий ввод" Style="{StaticResource ResourceKey=SigButton}" Margin="2,1,1,1" />
+            <Button x:Name="sum" Grid.Column="3" Content="+" Grid.Row="3" ToolTip="Сложение" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
             <TextBox x:Name="EnterField" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Text="0" Style="{StaticResource ResourceKey=EnterField}" Margin="1,1,1,1" Grid.RowSpan="1" IsReadOnly="True" />
         </Grid>
     </DockPanel>

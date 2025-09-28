@@ -5,27 +5,38 @@ using System.Windows.Controls;
 namespace CalculatorWPF
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для EngiWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EngiWindow : Window
     {
-        public MainWindow()
+        public EngiWindow()
         {
             InitializeComponent();
             UpdateDisplay();
         }
         private void UpdateDisplay()
         {
-            if (EnterField != null)
-                EnterField.Text = CalcEngine.GetCurrentDisplay();
+            EnterField.Text = CalcEngine.GetCurrentDisplay();
+        }
+        private void SimpleMenu_Click(object sender, RoutedEventArgs e)
+        {
+            this.Owner.Left = this.Left;
+            this.Owner.Top = this.Top;
+            this.Owner.Show();
+            this.Close();
+        }
+        private void ExitMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
         private void myGrid_Click_1(object sender, RoutedEventArgs e)
         {
             var element = e.Source as FrameworkElement;
             if (element == null) return;
-            // Отладочная информация
+
             string debugInfo = $"Кнопка: {element.Name}, Текущий ввод: {CalcEngine.GetCurrentDisplay()}";
             System.Diagnostics.Debug.WriteLine(debugInfo);
+
             try
             {
                 switch (element.Name)
@@ -55,6 +66,14 @@ namespace CalculatorWPF
                     case "c": CalcEngine.Clear(); break;
                     case "ce": CalcEngine.ClearAll(); break;
                     case "backspace": CalcEngine.Backspace(); break;
+
+                    //Инженерные Функции
+                    case "power": CalcEngine.Power(); break;
+                    case "square": CalcEngine.Square(); break;
+                    case "sqrt": CalcEngine.SquareRoot(); break;
+                    case "reciprocal": CalcEngine.Reciprocal(); break;
+                    case "cubesqrt": CalcEngine.CubeRoot(); break;
+                    case "factor": CalcEngine.Factorial(); break;
                 }
                 UpdateDisplay();
             }
@@ -66,48 +85,19 @@ namespace CalculatorWPF
             }
             e.Handled = true;
         }
-        //private void About_Click(object sender, RoutedEventArgs e)
-        //{
-            
-        //}
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
-            Application.Current.Shutdown();
-        }
 
-        private void Engineering_Click_1(object sender, RoutedEventArgs e)
-        {
-            EngiWindow engiWindow = new EngiWindow();
-            engiWindow.Owner = this;
-            engiWindow.Left = this.Left;
-            engiWindow.Top = this.Top;
-
-            this.Hide();
-            engiWindow.Show();
-        }
-
-        private void QuadraticEquation_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             QEWindow qeWindow = new QEWindow();
             qeWindow.Owner = this;
             qeWindow.Show(); 
         }
 
-        private void About_Click_1(object sender, RoutedEventArgs e)
+        private void About_Click(object sender, RoutedEventArgs e)
         {
             AboutWindow aboutWindow = new AboutWindow();
             aboutWindow.Owner = this;
             aboutWindow.Show();
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
