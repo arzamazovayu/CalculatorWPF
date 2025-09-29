@@ -4,9 +4,6 @@ using System.Windows.Controls;
 
 namespace CalculatorWPF
 {
-    /// <summary>
-    /// Логика взаимодействия для EngiWindow.xaml
-    /// </summary>
     public partial class EngiWindow : Window
     {
         public EngiWindow()
@@ -29,16 +26,14 @@ namespace CalculatorWPF
         {
             Application.Current.Shutdown();
         }
+        //метод обработки клика по сетке
         private void myGrid_Click_1(object sender, RoutedEventArgs e)
         {
             var element = e.Source as FrameworkElement;
             if (element == null) return;
 
-            string debugInfo = $"Кнопка: {element.Name}, Текущий ввод: {CalcEngine.GetCurrentDisplay()}";
-            System.Diagnostics.Debug.WriteLine(debugInfo);
-
-            try
-            {
+            //try
+            //{
                 switch (element.Name)
                 {
                     // Цифры
@@ -76,13 +71,13 @@ namespace CalculatorWPF
                     case "factor": CalcEngine.Factorial(); break;
                 }
                 UpdateDisplay();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Ошибка: {ex.Message}");
-                if (EnterField != null)
-                    EnterField.Text = "Error";
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    System.Diagnostics.Debug.WriteLine($"Ошибка: {ex.Message}");
+            //    if (EnterField != null)
+            //        EnterField.Text = "Error";
+            //}
             e.Handled = true;
         }
 

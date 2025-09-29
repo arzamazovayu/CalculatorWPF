@@ -88,36 +88,64 @@
                 <ColumnDefinition Width="*"/>
 
             </Grid.ColumnDefinitions>
-            <Button x:Name="comma" Grid.Column="1" Content="." Grid.Row="7" 	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
-            <Button x:Name="invert" Grid.Column="3" Content="+/-" Grid.Row="7" Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1"/>
-            <Button x:Name="zero" Grid.Column="2" Content="0" Grid.Row="7"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
-            <Button x:Name="equal" Grid.Column="4" Content="=" Grid.Row="7"	Style="{StaticResource ResourceKey=EntButton}" Margin="1,1,1,1"/>
-            <Button x:Name="seven" Grid.Column="1" Content="7" Grid.Row="6"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
-            <Button x:Name="eight" Grid.Column="2" Content="8" Grid.Row="6"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
-            <Button x:Name="nine" Grid.Column="3" Content="9" Grid.Row="6"	Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1"/>
-            <Button x:Name="divide" Grid.Column="4" Content=":" Grid.Row="6"	Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
-            <Button x:Name="four" Grid.Column="1" Content="4" Grid.Row="5"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
-            <Button x:Name="five" Grid.Column="2" Content="5" Grid.Row="5"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
-            <Button x:Name="six" Grid.Column="3" Content="6" Grid.Row="5"	Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1"/>
-            <Button x:Name="times" Grid.Column="4" Content="x" Grid.Row="5"	Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
-            <Button x:Name="one" Grid.Column="1" Content="1" Grid.Row="4"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
-            <Button x:Name="two" Grid.Column="2" Content="2" Grid.Row="4"	Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
-            <Button x:Name="three" Grid.Column="3" Content="3" Grid.Row="4"	Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1"/>
-            <Button x:Name="substract" Grid.Column="4" Content="-" Grid.Row="4"	Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
-            <Button x:Name="backspace" Grid.Column="1" Content="←" Grid.Row="3" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
-            <Button x:Name="ce" Grid.Column="2" Content="CE" Grid.Row="3"	Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,0,1"/>
-            <Button x:Name="c" Grid.Column="3" Content="C" Grid.Row="3"		Style="{StaticResource ResourceKey=SigButton}" Margin="2,1,1,1"/>
-            <Button x:Name="sum" Grid.Column="4" Content="+" Grid.Row="3"	Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
-            
-            <Button x:Name="power" Content="x^y" Grid.Row="3" Grid.Column="0" ToolTip="Возведение в указанную степень" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
-            <Button x:Name="square" Content="x²" Grid.Row="4" Grid.Column="0" ToolTip="Квадрат числа" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
-            <Button x:Name="sqrt" Content="√x" Grid.Row="5" Grid.Column="0" ToolTip="Квадратный корень" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
-            <Button x:Name="reciprocal" Content="1/x" Grid.Row="6" Grid.Column="0" ToolTip="Обратное значение числа" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="comma" Grid.Column="1" Content="." Grid.Row="7" 
+                    ToolTip="Десятичная точка" Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
+            <Button x:Name="invert" Grid.Column="3" Content="+/-" Grid.Row="7" 
+                    ToolTip="Сменить знак"  Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1"/>
+            <Button x:Name="zero" Grid.Column="2" Content="0" Grid.Row="7"	
+                    Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
+            <Button x:Name="equal" Grid.Column="4" Content="=" Grid.Row="7"	
+                    ToolTip="Вычислить результат" Style="{StaticResource ResourceKey=EntButton}" Margin="1,1,1,1"/>
+            <Button x:Name="seven" Grid.Column="1" Content="7" Grid.Row="6"	
+                    Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
+            <Button x:Name="eight" Grid.Column="2" Content="8" Grid.Row="6"	
+                    Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
+            <Button x:Name="nine" Grid.Column="3" Content="9" Grid.Row="6"	
+                    Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1"/>
+            <Button x:Name="divide" Grid.Column="4" Content=":" Grid.Row="6"	
+                    ToolTip="Деление" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="four" Grid.Column="1" Content="4" Grid.Row="5"	
+                    Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
+            <Button x:Name="five" Grid.Column="2" Content="5" Grid.Row="5"	
+                    Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
+            <Button x:Name="six" Grid.Column="3" Content="6" Grid.Row="5"	
+                    Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1"/>
+            <Button x:Name="times" Grid.Column="4" Content="x" Grid.Row="5"	
+                    ToolTip="Умножение" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="one" Grid.Column="1" Content="1" Grid.Row="4"	
+                    Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,1,1"/>
+            <Button x:Name="two" Grid.Column="2" Content="2" Grid.Row="4"	
+                    Style="{StaticResource ResourceKey=NumButton}" Margin="1,1,0,1"/>
+            <Button x:Name="three" Grid.Column="3" Content="3" Grid.Row="4"	
+                    Style="{StaticResource ResourceKey=NumButton}" Margin="2,1,1,1"/>
+            <Button x:Name="substract" Grid.Column="4" Content="-" Grid.Row="4"	
+                    ToolTip="Вычитание" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="backspace" Grid.Column="1" Content="←" Grid.Row="3" 
+                    ToolTip="Удалить последний символ" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="ce" Grid.Column="2" Content="CE" Grid.Row="3"	
+                    ToolTip="Очистить всё" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,0,1"/>
+            <Button x:Name="c" Grid.Column="3" Content="C" Grid.Row="3"		
+                    ToolTip="Очистить текущий ввод" Style="{StaticResource ResourceKey=SigButton}" Margin="2,1,1,1"/>
+            <Button x:Name="sum" Grid.Column="4" Content="+" Grid.Row="3"	
+                    ToolTip="Сложение" 
+                    Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <!--инженерные функции-->
+            <Button x:Name="power" Content="x^y" Grid.Row="3" Grid.Column="0" ToolTip="Возведение в указанную степень" 
+                    Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="square" Content="x²" Grid.Row="4" Grid.Column="0" ToolTip="Квадрат числа" 
+                    Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="sqrt" Content="√x" Grid.Row="5" Grid.Column="0" ToolTip="Квадратный корень" 
+                    Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="reciprocal" Content="1/x" Grid.Row="6" Grid.Column="0" ToolTip="Обратное значение числа" 
+                    Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
 
-            <Button x:Name="cubesqrt" Content="3√x" Grid.Row="7" Grid.Column="0" ToolTip="Кубический корень" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
-            <Button x:Name="factor" Content="n!" Grid.Row="2" Grid.Column="4" ToolTip="Факториал целого числа" Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1" Background="#FF191919"/>
+            <Button x:Name="cubesqrt" Content="3√x" Grid.Row="7" Grid.Column="0" ToolTip="Кубический корень" 
+                    Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1"/>
+            <Button x:Name="factor" Content="n!" Grid.Row="2" Grid.Column="4" ToolTip="Факториал целого числа, максимум 18!" 
+                    Style="{StaticResource ResourceKey=SigButton}" Margin="1,1,1,1" Background="#FF191919"/>
 
-            <TextBox x:Name="EnterField" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Text="0" Style="{StaticResource EnterField}" IsReadOnly="True"/>
+            <TextBox x:Name="EnterField" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Text="0" 
+                     Style="{StaticResource EnterField}" IsReadOnly="True"/>
         </Grid>
     </DockPanel>
 </Window>

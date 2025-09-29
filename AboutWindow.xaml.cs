@@ -7,7 +7,7 @@ namespace CalculatorWPF
         public AboutWindow()
         {
             InitializeComponent();
-            txtAbout.Text = "Калькулятор\n" +
+            About.Text = "Калькулятор\n" +
                            "Версия 1.0\n"+
                            "Калькулятор с функцией инженерного и опцией вычисления корней квадратного уравнения\n" +
                            "Арзамазов А.Ю. 2025";

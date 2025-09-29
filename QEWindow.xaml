@@ -1,9 +1,8 @@
 ﻿<Window x:Class="CalculatorWPF.QEWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Quadratic Equation Solver" Height="400" Width="300"
-        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
-        Background="#FF191919">
+        Title="Quadratic Equation Solver" Height="400" Width="300" ResizeMode="NoResize"
+        Background="#FF191919" WindowStartupLocation="CenterOwner">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="#FF353535"/>
@@ -56,16 +55,16 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Content="Коэффициент a:" Margin="5,5,5,5"/>
-        <TextBox x:Name="txtA" Grid.Row="0" Grid.Column="1" Text="1" 
+        <Label Grid.Row="0" Grid.Column="0" Content="Коэффициент a:" Margin="5"/>
+        <TextBox x:Name="A" Grid.Row="0" Grid.Column="1" Text="1" 
                  PreviewTextInput="NumberValidationTextBox" Grid.ColumnSpan="2" Margin="7"/>
 
-        <Label Grid.Row="1" Grid.Column="0" Content="Коэффициент b:" Margin="5,5,5,5"/>
-        <TextBox x:Name="txtB" Grid.Row="1" Grid.Column="1" Text="0" 
+        <Label Grid.Row="1" Grid.Column="0" Content="Коэффициент b:" Margin="5"/>
+        <TextBox x:Name="B" Grid.Row="1" Grid.Column="1" Text="0" 
                  PreviewTextInput="NumberValidationTextBox" Grid.ColumnSpan="2" Margin="7"/>
 
-        <Label Grid.Row="2" Grid.Column="0" Content="Коэффициент c:" Margin="5,5,5,5"/>
-        <TextBox x:Name="txtC" Grid.Row="2" Grid.Column="1" Text="0" 
+        <Label Grid.Row="2" Grid.Column="0" Content="Коэффициент c:" Margin="5"/>
+        <TextBox x:Name="C" Grid.Row="2" Grid.Column="1" Text="0" 
                  PreviewTextInput="NumberValidationTextBox" Grid.ColumnSpan="2" Margin="7"/>
 
         <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
@@ -74,8 +73,7 @@
 
         <Button Content="Решить" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Click="Solve_Click" Width="100" Margin="5"/>
 
-        <TextBox x:Name="txtResult" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" 
-                 Text="Введите коэффициенты и нажмите 'Решить'" 
+        <TextBox x:Name="Result" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" 
                  TextAlignment="Left" 
                  FontSize="12" TextWrapping="Wrap" IsReadOnly="True"
                  VerticalScrollBarVisibility="Auto" 

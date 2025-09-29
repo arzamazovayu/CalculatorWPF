@@ -5,7 +5,7 @@ namespace CalculatorWPF
 {
     public class CalcEngine
     {
-        public enum Operator : int
+        public enum Operator : int //операторы вычислений
         {
             eUnknown = 0,
             eAdd = 1,
@@ -16,10 +16,10 @@ namespace CalculatorWPF
         }
 
         private static string currentInput = "0";
-        private static Operator pendingOperation = Operator.eUnknown;
+        private static Operator pendingOperation = Operator.eUnknown; //отложенная операция
         private static double firstNumber = 0;
-        private static bool shouldResetInput = false;
-        public static string InputNumber(string number)
+        private static bool shouldResetInput = false; //обновить ввод
+        public static string InputNumber(string number) //ввод чисел
         {
             if (shouldResetInput || currentInput == "0" || currentInput == "Error")
             {
@@ -32,20 +32,20 @@ namespace CalculatorWPF
             }
             return currentInput;
         }
-        public static string InputDecimal()
+        public static string InputDecimal() //ввод десятичной точки
         {
             if (shouldResetInput || currentInput == "Error")
             {
-                currentInput = "0.";  // Используем точку вместо запятой
+                currentInput = "0.";  
                 shouldResetInput = false;
             }
-            else if (!currentInput.Contains("."))  // Проверяем точку вместо запятой
+            else if (!currentInput.Contains("."))  
             {
-                currentInput += ".";  // Добавляем точку вместо запятой
+                currentInput += ".";  
             }
             return currentInput;
         }
-        public static string ChangeSign()
+        public static string ChangeSign() //смена знака
         {
             if (currentInput != "0" && currentInput != "Error")
             {
@@ -58,8 +58,9 @@ namespace CalculatorWPF
         }
         public static void SetOperation(Operator operation)
         {
-            // Парсим напрямую - теперь currentInput всегда с точкой
-            if (double.TryParse(currentInput, NumberStyles.Any, CultureInfo.InvariantCulture, out double number))
+            // Парсим текущий ввод в число
+            if (double.TryParse(currentInput, NumberStyles.Any, CultureInfo.InvariantCulture, out double number)) 
+                //инвариантную культуру пришлось добавить из-за путаницы с запятыми и точками в разделителе 
             {
                 // Если уже есть операция и мы не в режиме сброса, вычисляем её
                 if (pendingOperation != Operator.eUnknown && !shouldResetInput)
@@ -78,35 +79,38 @@ namespace CalculatorWPF
             pendingOperation = operation;
             shouldResetInput = true;
         }
+        //вычисления с первым и вторым числами
         private static double PerformCalculation(double first, double second, Operator op)
         {
             switch (op)
             {
-                case Operator.eAdd: return first + second;
-                case Operator.eSubtract: return first - second;
-                case Operator.eMultiply: return first * second;
-                case Operator.eDivide: return second != 0 ? first / second : double.NaN;
-                case Operator.ePower: return Math.Pow(first, second);
+                case Operator.eAdd: return first + second;                              //сложение
+                case Operator.eSubtract: return first - second;                         //вычитание
+                case Operator.eMultiply: return first * second;                         //умножение
+                case Operator.eDivide: return second != 0 ? first / second : double.NaN;//деление не на 0
+                case Operator.ePower: return Math.Pow(first, second);                   //возведение в произвольную степень
                 default: return second;
             }
         }
+        //метод вычисления
         public static string Calculate()
         {
             // Выполняем операцию только если есть pending операция и мы не в режиме сброса
             if (pendingOperation != Operator.eUnknown && !shouldResetInput)
             {
-                // Парсим напрямую - теперь currentInput всегда с точкой
+                // Парсим второе число
                 if (double.TryParse(currentInput, NumberStyles.Any, CultureInfo.InvariantCulture, out double secondNumber))
                 {
                     double result = PerformCalculation(firstNumber, secondNumber, pendingOperation);
                     currentInput = FormatResult(result);
                 }
             }
-
-            pendingOperation = Operator.eUnknown;
-            shouldResetInput = true;
+            //сброс состояний
+            pendingOperation = Operator.eUnknown; //сброс отложенной операции
+            shouldResetInput = true; //сброс ввода для нового ввода
             return currentInput;
         }
+        //форматирование результата
         private static string FormatResult(double result)
         {
             if (double.IsNaN(result) || double.IsInfinity(result))
@@ -119,11 +123,13 @@ namespace CalculatorWPF
             // Для дробных чисел используем точку (без замены)
             return result.ToString("0.############", CultureInfo.InvariantCulture);
         }
+        //С
         public static void Clear()
         {
             currentInput = "0";
             shouldResetInput = false;
         }
+        //СЕ
         public static void ClearAll()
         {
             currentInput = "0";
@@ -151,6 +157,7 @@ namespace CalculatorWPF
             }
             return currentInput;
         }
+        //возведение в любую степень
         public static string Power()
         {
             if (double.TryParse(currentInput, NumberStyles.Any, CultureInfo.InvariantCulture, out double baseNumber))
@@ -162,6 +169,7 @@ namespace CalculatorWPF
             }
             return currentInput;
         }
+        //возведение в квадрат
         public static string Square()
         {
             if (double.TryParse(currentInput, NumberStyles.Any, CultureInfo.InvariantCulture, out double number))
@@ -172,6 +180,7 @@ namespace CalculatorWPF
             }
             return currentInput;
         }
+        //квадратный корень
         public static string SquareRoot()
         {
             if (double.TryParse(currentInput, NumberStyles.Any, CultureInfo.InvariantCulture, out double number))
@@ -189,6 +198,7 @@ namespace CalculatorWPF
             }
             return currentInput;
         }
+        //1/х
         public static string Reciprocal()
         {
             if (double.TryParse(currentInput, NumberStyles.Any, CultureInfo.InvariantCulture, out double number))
@@ -232,7 +242,7 @@ namespace CalculatorWPF
             }
             return currentInput;
         }
-
+        //кубический корень
         public static string CubeRoot()
         {
             if (double.TryParse(currentInput, NumberStyles.Any, CultureInfo.InvariantCulture, out double number))

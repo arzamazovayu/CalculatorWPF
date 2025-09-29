@@ -11,7 +11,7 @@ namespace CalculatorWPF
             InitializeComponent();
         }
 
-        // Класс вычислений
+        // Класс вычислений (взято из лабы по C#)
         private static class Operations
         {
             // Метод вычисления дискриминанта
@@ -64,28 +64,28 @@ namespace CalculatorWPF
             try
             {
                 // Проверяем корректность ввода коэффициентов
-                if (!double.TryParse(txtA.Text, out double a))
+                if (!double.TryParse(A.Text, out double a))
                 {
-                    txtResult.Text = "Ошибка: Введите корректное число для коэффициента a";
+                    Result.Text = "Ошибка: Введите корректное число для коэффициента a";
                     return;
                 }
 
-                if (!double.TryParse(txtB.Text, out double b))
+                if (!double.TryParse(B.Text, out double b))
                 {
-                    txtResult.Text = "Ошибка: Введите корректное число для коэффициента b";
+                    Result.Text = "Ошибка: Введите корректное число для коэффициента b";
                     return;
                 }
 
-                if (!double.TryParse(txtC.Text, out double c))
+                if (!double.TryParse(C.Text, out double c))
                 {
-                    txtResult.Text = "Ошибка: Введите корректное число для коэффициента c";
+                    Result.Text = "Ошибка: Введите корректное число для коэффициента c";
                     return;
                 }
 
                 // Проверяем, что a не равно 0
                 if (a == 0)
                 {
-                    txtResult.Text = "Ошибка: Коэффициент a не может быть равен 0!";
+                    Result.Text = "Ошибка: Коэффициент a не может быть равен 0!";
                     return;
                 }
 
@@ -107,16 +107,16 @@ namespace CalculatorWPF
                     result = $"Корни: x₁ = {FormatNumber(x1)}, x₂ = {FormatNumber(x2)}";
                 }
 
-                txtResult.Text = result;
+                Result.Text = result;
             }
             catch (Exception ex)
             {
-                txtResult.Text = $"Ошибка: {ex.Message}";
+                Result.Text = $"Ошибка: {ex.Message}";
             }
         }
         private string FormatNumber(double number)
         {
-            // Округляем до 6 знаков после запятой для красивого отображения
+            // Округляем до 6 знаков после запятой
             if (Math.Abs(number) < 1e-10) return "0";
             if (Math.Abs(number - Math.Round(number)) < 1e-10)
                 return Math.Round(number).ToString();
